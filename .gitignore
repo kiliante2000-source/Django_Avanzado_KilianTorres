@@ -1,0 +1,32 @@
+# Entornos virtuales
+venv/
+.env/
+.env*/
+
+# venv dentro de django_roles
+django_roles/venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Variables de entorno
+.env
+.env.local
+
+# IDEs / editores
+.vscode/
+.idea/
+*.swp
+
+# SO
+.DS_Store
+Thumbs.db

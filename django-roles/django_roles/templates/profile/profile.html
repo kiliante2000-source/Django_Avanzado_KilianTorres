@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- CARD DATOS DE PERFIL -->
+            <div class="card border rounded-2 shadow p-3 mb-3">
+                <div class="card-body">
+                    <img class="img-thumbnail rounded-circle mb-3" src="{{ user.profile.image.url }}"
+                        alt="{{ user.username }}" style="width: 100px;">
+
+                    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                    <h5>{{ group_name }}</h5>
+                    <hr>
+                    <p><strong>Nombre de usuario:</strong> {{ user.username }}</p>
+                    <p><strong>Domicilio:</strong> {{ user.profile.address }}</p>
+                    <p><strong>Localidad:</strong> {{ user.profile.location }}</p>
+                    <p><strong>Teléfono:</strong> {{ user.profile.telephone }}</p>
+
+                    <hr>
+                    <!-- ver cursos y registrarse -->
+                    <a class="btn btn-primary w-100 mb-2" href="{% url 'course_list' %}">Ver Cursos</a>
+
+                    <a class="btn btn-danger w-100" href="{% url 'logout' %}">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <!-- CARD ACTIVIDAD RECIENTE -->
+            <div class="card border rounded-2 shadow p-3 mb-3">
+                <div class="card-body">
+                    <!-- Evaluar grupo al que pertenece el usuario -->
+                    {% if group_name == 'Estudiantes' %}
+                        <h3>Actividad Reciente</h3>
+                        <p>Aquí puedes ver tu actividad reciente en la plataforma.</p>
+                    {% elif group_name == 'Profesores' %}
+                        <h3>Actividad Reciente</h3>
+                        <p>Aquí puedes ver tu actividad reciente en la plataforma.</p>
+                    {% elif group_name == 'Coordinadores' %}
+                        <h3>Actividad Reciente</h3>
+                        <p>Aquí puedes ver tu actividad reciente en la plataforma.</p>
+                    {% elif group_name == 'Administradores' %}
+                        <h3>Actividad Reciente</h3>
+                        <p>Aquí puedes ver tu actividad reciente en la plataforma.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

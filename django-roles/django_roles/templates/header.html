@@ -1,0 +1,41 @@
+{% if user.is_authenticated %}
+    {% if group_name == 'estudiantes' %}
+        <header class="header header-estudiantes">
+    {% elif group_name == 'profesores' %}
+        <header class="header header-profesores">
+    {% elif group_name == 'preceptores' %}
+        <header class="header header-preceptores">
+    {% elif group_name == 'administrativos' %}
+        <header class="header header-administrativos">
+    {% endif %}
+{% else %}
+    <header class="header header-estudiantes">
+{% endif %}
+
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="{% url 'home' %}" class="logo">ACADEMIA</a>
+
+            <ul class="nav-menu">
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+
+                {% if not user.is_authenticated or group_name == 'estudiantes' %}
+                    <li><a href="{% url 'pricing' %}">Precios</a></li>
+                    <li><a href="#">Preguntas y Respuestas</a></li>
+                    <li><a href="#">Acerca de</a></li>
+                {% endif %}
+            </ul>
+
+            <div class="auth-box">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="profile-link">
+                        {{ group_name_singular|capfirst }} | {{ user.username }}
+                    </a>
+                {% else %}
+                    <a class="btn btn-login" href="{% url 'custom_login' %}">Iniciar Sesión</a>
+                    <a class="btn btn-register" href="{% url 'register' %}">Registrarse</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

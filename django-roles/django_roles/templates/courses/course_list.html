@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="mb-4">Cursos</h1>
+
+    <div class="row">
+        {% for course in courses %}
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.name }}</h5>
+                        <p class="card-text">
+                            {{ course.description|default:"Sin descripción" }}
+                        </p>
+                        <p class="mb-1"><strong>Profesor:</strong> {{ course.teacher.username }}</p>
+                        <p class="mb-1"><strong>Cantidad de clases:</strong> {{ course.class_quantity }}</p>
+
+                        <!-- Botón futuro para ver detalle -->
+                        <a href="#" class="btn btn-primary btn-sm">Ver detalle</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No hay cursos disponibles.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

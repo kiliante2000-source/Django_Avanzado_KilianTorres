@@ -7,10 +7,10 @@ from .models import Profile
 def add_user_to_students_group(sender, instance, created, **kwargs):
     if created:
         try:
-            students = Group.objects.get(name='Estudiantes')
+            group1 = Group.objects.get(name='Estudiantes')
         except Group.DoesNotExist:
-            students = Group.objects.create(name='Estudiantes')
-            students = Group.objects.create(name='Profesores')
-            students = Group.objects.create(name='Coordinadores')
-            students = Group.objects.create(name='Administradores')
-        instance.user.groups.add(students) 
+            group1 = Group.objects.create(name='Estudiantes')
+            group2 = Group.objects.create(name='Profesores')
+            group3 = Group.objects.create(name='Coordinadores')
+            group4 = Group.objects.create(name='Administradores')
+        instance.user.groups.add(group1) 
